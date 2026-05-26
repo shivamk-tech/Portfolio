@@ -18,6 +18,7 @@ function Card({ project }: { project: typeof projects[0] }) {
 
   return (
     <div
+      className="hs-card"
       style={{ width: "70vw", height: "75vh", flexShrink: 0, borderRadius: 20, overflow: "hidden", position: "relative", cursor: "pointer" }}
       onMouseEnter={() => {
         videoRef.current?.play();
@@ -31,10 +32,19 @@ function Card({ project }: { project: typeof projects[0] }) {
         if (timerRef.current) clearInterval(timerRef.current);
         if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
       }}
+      onTouchStart={() => {
+        videoRef.current?.play();
+        if (project.video) {
+          if (timerRef.current) clearInterval(timerRef.current);
+          timerRef.current = setInterval(() => {
+            if (videoRef.current) { videoRef.current.currentTime = 0; videoRef.current.play(); }
+          }, project.duration);
+        }
+      }}
     >
       <img src={project.image} alt={project.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
       {project.video && (
-        <video ref={videoRef} src={project.video} muted playsInline
+        <video ref={videoRef} src={project.video} muted autoPlay playsInline loop={false}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
       )}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)" }} />
@@ -42,7 +52,7 @@ function Card({ project }: { project: typeof projects[0] }) {
         {project.tag}
       </div>
       <div style={{ position: "absolute", top: 16, right: 16, padding: "3px 10px", background: "rgba(0,0,0,0.5)", borderRadius: 4, fontSize: "0.65rem", fontFamily: "Fira Code, monospace", color: "rgba(255,255,255,0.35)", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(8px)" }}>
-        hover to play
+        tap / hover to play
       </div>
       <div style={{ position: "absolute", bottom: 24, left: 24, fontFamily: "Space Grotesk, sans-serif", fontSize: "1.3rem", fontWeight: 700, color: "#f1f5f9" }}>
         {project.title}
@@ -94,11 +104,19 @@ export default function HorizontalScroll() {
   return (
     <div ref={sectionRef} style={{ background: "#080808" }}>
       {mounted && (
-        <div ref={trackRef} style={{ display: "flex", alignItems: "center", width: "max-content", height: "100vh", padding: "0 60px", gap: "20px" }}>
+        <div ref={trackRef} style={{ display: "flex", alignItems: "center", width: "max-content", height: "100vh", padding: "0 20px", gap: "16px" }}>
           {projects.map((p, i) => <Card key={i} project={p} />)}
           <div style={{ width: "15vw", flexShrink: 0 }} />
         </div>
       )}
+      <style>{`
+        @media (max-width: 768px) {
+          .hs-card { width: 82vw !important; height: 60vh !important; border-radius: 14px !important; }
+        }
+        @media (max-width: 480px) {
+          .hs-card { width: 88vw !important; height: 56vh !important; border-radius: 12px !important; }
+        }
+      `}</style>
     </div>
   );
 }
