@@ -7,7 +7,7 @@ import { Rocket, Code2, Brain, Target, BookOpen, Laugh, Code, Briefcase, Externa
 const journey = [
   {
     title: "Started Coding Journey",
-    period: "Aug 2024 — Present",
+    period: "Aug 2025",
     type: "Self-taught",
     icon: <Rocket size={18} />,
     description: "Dove headfirst into web development with zero prior experience. Learned HTML, CSS, JavaScript, and fell in love with building things on the web.",
@@ -17,7 +17,7 @@ const journey = [
   },
   {
     title: "Full Stack Developer",
-    period: "Feb 2025 — Present",
+    period: "Feb 2026",
     type: "Building Projects",
     icon: <Code2 size={18} />,
     description: "Levelled up to full-stack development with Next.js and TypeScript. Built real-world projects including an Uber clone with real-time features.",
@@ -27,7 +27,7 @@ const journey = [
   },
   {
     title: "Agentic AI & Generative AI",
-    period: "2025 — Present",
+    period: "2026 — Present",
     type: "Current Focus",
     icon: <Brain size={18} />,
     description: "Now working on Agentic AI and Generative AI — building intelligent systems that can reason, plan, and act autonomously. Exploring LLMs, AI agents, and modern AI tooling.",
@@ -37,7 +37,7 @@ const journey = [
   },
   {
     title: "Working at Algomise",
-    period: "2025 — Present",
+    period: "2026 — Present",
     type: "Currently Working",
     icon: <Briefcase size={18} />,
     description: "Just started working with Algomise — an exciting early-stage venture. Contributing to building the product from the ground up.",
