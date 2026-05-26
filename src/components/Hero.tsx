@@ -200,6 +200,12 @@ export default function Hero() {
 
       <style>{`
         @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; } .hero-avatar { display: none !important; } }
+        @media (max-width: 768px) {
+          .hero-badge { margin-bottom: 20px !important; }
+          .hero-desc { font-size: 0.9rem !important; margin-bottom: 28px !important; }
+          .hero-ctas { gap: 10px !important; }
+          .hero-stats { gap: 28px !important; margin-top: 36px !important; padding-top: 28px !important; }
+        }
       `}</style>
     </section>
   );

@@ -22,8 +22,8 @@ export default function Footer() {
           {/* Brand col */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
-              <div style={{ width: 36, height: 36, borderRadius: 10, background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", fontWeight: 800, color: "#080808", fontFamily: "Space Grotesk, sans-serif" }}>
-                S
+              <div style={{ width: 36, height: 36, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.15)", flexShrink: 0 }}>
+                <img src="/me.png" alt="Shivam" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
               <span style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: "1.1rem", color: "#f1f5f9" }}>Shivam</span>
             </div>
@@ -98,7 +98,7 @@ export default function Footer() {
         </div>
 
         {/* Divider + bottom bar */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
+        <div className="footer-bottom" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
           <span style={{ fontSize: "0.8rem", color: "#334155", fontFamily: "Fira Code, monospace" }}>
             © {year} Shivam Kumar Sagar. All rights reserved.
           </span>
@@ -121,12 +121,18 @@ export default function Footer() {
           className="text-center font-black leading-none"
           style={{ fontSize: "clamp(4rem, 18vw, 13rem)", color: "rgba(255,255,255,0.04)", letterSpacing: "-0.02em", fontFamily: "Space Grotesk, sans-serif", fontWeight: 900 }}
         >
-          Shivam
+          TeNzIn
         </p>
       </div>
 
       <style>{`
-        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }
+        @media (max-width: 768px) {
+          .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .container { padding-left: 16px !important; padding-right: 16px !important; }
+        }
+        @media (max-width: 480px) {
+          .footer-bottom { flex-direction: column !important; text-align: center; gap: 8px !important; }
+        }
       `}</style>
     </footer>
   );

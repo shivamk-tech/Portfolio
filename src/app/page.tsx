@@ -9,7 +9,7 @@ import HorizontalScrollClient from "@/components/HorizontalScrollClient";
 
 export default function Home() {
   return (
-    <main style={{ background: "var(--bg-primary)" }}>
+    <main style={{ background: "var(--bg-primary)", overflowX: "hidden" }}>
       <Navbar />
       <Hero />
       <Projects/>

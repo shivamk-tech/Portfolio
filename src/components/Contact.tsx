@@ -155,6 +155,10 @@ export default function Contact() {
 
       <style>{`
         @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr !important; } .form-row { grid-template-columns: 1fr !important; } }
+        @media (max-width: 480px) {
+          .contact-grid { gap: 24px !important; }
+          .glass-card { padding: 20px !important; }
+        }
       `}</style>
     </section>
   );

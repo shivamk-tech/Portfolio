@@ -81,7 +81,7 @@ export default function Experience() {
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "48px", alignItems: "start" }} className="exp-grid">
 
           {/* Timeline */}
-          <div style={{ paddingLeft: "32px" }}>
+          <div className="timeline-col" style={{ paddingLeft: "32px" }}>
             {journey.map((item, i) => (
               <motion.div
                 key={i}
@@ -280,7 +280,13 @@ export default function Experience() {
         </div>
       </div>
 
-      <style>{`@media (max-width: 900px) { .exp-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        @media (max-width: 900px) { .exp-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 768px) {
+          .timeline-col { padding-left: 24px !important; }
+          .exp-grid { gap: 32px !important; }
+        }
+      `}</style>
     </section>
   );
 }

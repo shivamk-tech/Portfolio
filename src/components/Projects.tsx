@@ -185,6 +185,7 @@ export default function Projects() {
 
       <style>{`
         @media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 480px) { .project-preview { height: 160px !important; } }
         .project-preview-img { object-position: top; }
         .project-preview:hover .project-preview-img { opacity: 1 !important; transform: scale(1.04); }
       `}</style>
