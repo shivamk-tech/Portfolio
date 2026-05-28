@@ -2,36 +2,75 @@
 import { motion } from "framer-motion";
 import { Reveal, StaggerContainer, StaggerItem } from "./Motion";
 import { Layers, Server, BookOpen, Sprout, Zap } from "lucide-react";
+import {
+  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiHtml5, SiTailwindcss,
+  SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPrisma, SiRedis, SiPostgresql, SiKdeneon,
+  SiPython, SiCplusplus, SiGit, SiGithub, SiPostman,
+} from "react-icons/si";
+import { Code2 } from "lucide-react";
 
 const skills = {
   "Frontend": [
-    "React.js", "Next.js", "TypeScript", "JavaScript", "HTML / CSS", "Tailwind CSS",
+    { name: "React.js",     icon: <SiReact /> },
+    { name: "Next.js",      icon: <SiNextdotjs /> },
+    { name: "TypeScript",   icon: <SiTypescript /> },
+    { name: "JavaScript",   icon: <SiJavascript /> },
+    { name: "HTML / CSS",   icon: <SiHtml5 /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
   ],
   "Backend": [
-    "Node.js", "Express.js", "MongoDB", "MySQL", "REST APIs",
+    { name: "Node.js",    icon: <SiNodedotjs /> },
+    { name: "Express.js", icon: <SiExpress /> },
+    { name: "MongoDB",    icon: <SiMongodb /> },
+    { name: "MySQL",      icon: <SiMysql /> },
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "Prisma",     icon: <SiPrisma /> },
+    { name: "Redis",      icon: <SiRedis /> },
+    { name: "Neon",       icon: <SiKdeneon /> },
   ],
   "Learning & Tools": [
-    "Python", "C / C++", "Git & GitHub", "VS Code", "Postman",
+    { name: "Python",      icon: <SiPython /> },
+    { name: "C / C++",     icon: <SiCplusplus /> },
+    { name: "Git",         icon: <SiGit /> },
+    { name: "GitHub",      icon: <SiGithub /> },
+    { name: "VS Code",     icon: <Code2 size={14} /> },
+    { name: "Postman",     icon: <SiPostman /> },
   ],
 };
 
 const categoryIcon: Record<string, React.ReactNode> = {
-  "Frontend": <Layers size={16} />,
-  "Backend": <Server size={16} />,
+  "Frontend":         <Layers size={16} />,
+  "Backend":          <Server size={16} />,
   "Learning & Tools": <BookOpen size={16} />,
 };
 
 const currentlyLearning = [
-  { label: "Agentic AI & Gen AI", icon: <Sprout size={14} />, status: "In Progress" },
-  { label: "Advanced Next.js & TypeScript", icon: <Layers size={14} />, status: "Building" },
-  { label: "System Design", icon: <Server size={14} />, status: "Exploring" },
+  { label: "Agentic AI & Gen AI",           icon: <Sprout size={14} />, status: "In Progress" },
+  { label: "Advanced Next.js & TypeScript", icon: <Layers size={14} />, status: "Building"    },
+  { label: "System Design",                 icon: <Server size={14} />, status: "Exploring"   },
 ];
 
 const techStack = [
-  "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
-  "Express.js", "MongoDB", "MySQL", "Python", "C++", "C",
-  "HTML5", "CSS3", "Tailwind CSS", "Git", "GitHub", "Postman", "VS Code",
-  "LLMs", "AI Agents", "Gen AI", "Instagram API", "GitHub API",
+  { name: "JavaScript",  icon: <SiJavascript /> },
+  { name: "TypeScript",  icon: <SiTypescript /> },
+  { name: "React",       icon: <SiReact /> },
+  { name: "Next.js",     icon: <SiNextdotjs /> },
+  { name: "Node.js",     icon: <SiNodedotjs /> },
+  { name: "Express.js",  icon: <SiExpress /> },
+  { name: "MongoDB",     icon: <SiMongodb /> },
+  { name: "MySQL",       icon: <SiMysql /> },
+  { name: "PostgreSQL",  icon: <SiPostgresql /> },
+  { name: "Prisma",      icon: <SiPrisma /> },
+  { name: "Redis",       icon: <SiRedis /> },
+  { name: "Neon",        icon: <SiKdeneon /> },
+  { name: "Python",      icon: <SiPython /> },
+  { name: "C++",         icon: <SiCplusplus /> },
+  { name: "HTML5",       icon: <SiHtml5 /> },
+  { name: "Tailwind CSS",icon: <SiTailwindcss /> },
+  { name: "Git",         icon: <SiGit /> },
+  { name: "GitHub",      icon: <SiGithub /> },
+  { name: "Postman",     icon: <SiPostman /> },
+  { name: "VS Code",     icon: <Code2 size={14} /> },
 ];
 
 export default function Skills() {
@@ -67,15 +106,17 @@ export default function Skills() {
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                   {items.map((skill, i) => (
                     <motion.span
-                      key={skill}
+                      key={skill.name}
                       className="skill-badge"
                       initial={{ opacity: 0, scale: 0.85 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.05, type: "spring", stiffness: 200 }}
                       whileHover={{ scale: 1.08, background: "rgba(255,255,255,0.1)", color: "#f1f5f9" }}
+                      style={{ display: "flex", alignItems: "center", gap: "6px" }}
                     >
-                      {skill}
+                      <span style={{ fontSize: "0.9rem" }}>{skill.icon}</span>
+                      {skill.name}
                     </motion.span>
                   ))}
                 </div>
@@ -123,15 +164,17 @@ export default function Skills() {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "center" }}>
               {techStack.map((tech, i) => (
                 <motion.span
-                  key={tech}
+                  key={tech.name}
                   className="skill-badge"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.03, type: "spring", stiffness: 200 }}
                   whileHover={{ scale: 1.1, background: "rgba(255,255,255,0.1)", color: "#f1f5f9" }}
+                  style={{ display: "flex", alignItems: "center", gap: "6px" }}
                 >
-                  {tech}
+                  <span style={{ fontSize: "0.9rem" }}>{tech.icon}</span>
+                  {tech.name}
                 </motion.span>
               ))}
             </div>
